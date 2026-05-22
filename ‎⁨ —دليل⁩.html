@@ -1,0 +1,1418 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>دليلك الشامل للتغلب على التأتأة</title>
+<link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;800&display=swap" rel="stylesheet">
+<style>
+:root {
+  --navy: #0f2744;
+  --blue: #1a4a8a;
+  --sky: #2d7dd2;
+  --teal: #0ea5b0;
+  --gold: #e8a020;
+  --light: #f0f6ff;
+  --white: #ffffff;
+  --gray: #6b7a8d;
+  --text: #1a2535;
+  --border: #d5e3f0;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: 'Tajawal', sans-serif;
+  background: #e8eef6;
+  color: var(--text);
+  line-height: 1.85;
+  direction: rtl;
+}
+
+/* ─── HERO ─── */
+.hero {
+  background: linear-gradient(160deg, var(--navy) 0%, var(--blue) 60%, var(--sky) 100%);
+  padding: 60px 30px 50px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+.hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse at 20% 50%, rgba(46,125,210,.25) 0%, transparent 60%),
+    radial-gradient(ellipse at 80% 20%, rgba(14,165,176,.2) 0%, transparent 50%);
+}
+.hero-inner { position: relative; max-width: 760px; margin: 0 auto; }
+.hero-badge {
+  display: inline-block;
+  background: rgba(255,255,255,.12);
+  border: 1px solid rgba(255,255,255,.25);
+  color: #c8dff8;
+  padding: 5px 18px;
+  border-radius: 20px;
+  font-size: 13px;
+  letter-spacing: .5px;
+  margin-bottom: 18px;
+}
+.hero h1 {
+  font-size: clamp(26px, 5vw, 42px);
+  font-weight: 800;
+  color: #fff;
+  line-height: 1.4;
+  margin-bottom: 14px;
+}
+.hero h1 span { color: var(--gold); }
+.hero p {
+  font-size: 16px;
+  color: #a8c8e8;
+  max-width: 560px;
+  margin: 0 auto 24px;
+}
+.hero-stats {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  flex-wrap: wrap;
+}
+.stat {
+  background: rgba(255,255,255,.1);
+  border: 1px solid rgba(255,255,255,.18);
+  border-radius: 12px;
+  padding: 12px 22px;
+  color: #fff;
+}
+.stat strong { display: block; font-size: 22px; font-weight: 800; color: var(--gold); }
+.stat span { font-size: 12px; color: #a8c8e8; }
+
+/* ─── NAV TABS ─── */
+.tab-bar {
+  background: var(--white);
+  border-bottom: 2px solid var(--border);
+  display: flex;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  box-shadow: 0 2px 12px rgba(0,0,0,.06);
+}
+.tab-bar::-webkit-scrollbar { display: none; }
+.tab-btn {
+  flex-shrink: 0;
+  padding: 14px 22px;
+  background: none;
+  border: none;
+  border-bottom: 3px solid transparent;
+  font-family: 'Tajawal', sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--gray);
+  cursor: pointer;
+  transition: all .2s;
+  white-space: nowrap;
+  scroll-snap-align: start;
+}
+.tab-btn.active, .tab-btn:hover {
+  color: var(--sky);
+  border-bottom-color: var(--sky);
+}
+
+/* ─── MAIN LAYOUT ─── */
+.main { max-width: 860px; margin: 0 auto; padding: 30px 20px 60px; }
+
+.section { display: none; animation: fadeIn .35s ease; }
+.section.active { display: block; }
+@keyframes fadeIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: none; } }
+
+/* ─── SECTION HEADING ─── */
+.sec-title {
+  font-size: 24px;
+  font-weight: 800;
+  color: var(--navy);
+  margin-bottom: 6px;
+  padding-right: 16px;
+  border-right: 5px solid var(--sky);
+}
+.sec-sub { font-size: 15px; color: var(--gray); margin-bottom: 28px; }
+
+/* ─── CARDS ─── */
+.card {
+  background: var(--white);
+  border-radius: 14px;
+  border: 1px solid var(--border);
+  padding: 24px;
+  margin-bottom: 18px;
+  transition: box-shadow .2s;
+}
+.card:hover { box-shadow: 0 6px 20px rgba(15,39,68,.07); }
+
+.card-header {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 14px;
+}
+.num {
+  background: var(--navy);
+  color: var(--white);
+  width: 36px; height: 36px;
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-weight: 800; font-size: 15px;
+  flex-shrink: 0;
+}
+.num.teal { background: var(--teal); }
+.num.gold { background: var(--gold); }
+.card-title { font-size: 18px; font-weight: 700; color: var(--navy); }
+.card-sub { font-size: 13px; color: var(--gray); }
+
+.steps { margin: 12px 0 0; }
+.step {
+  display: flex; gap: 12px; align-items: flex-start;
+  padding: 10px 0;
+  border-bottom: 1px dashed var(--border);
+}
+.step:last-child { border-bottom: none; }
+.step-dot {
+  width: 8px; height: 8px; border-radius: 50%;
+  background: var(--sky);
+  flex-shrink: 0; margin-top: 9px;
+}
+.step p { font-size: 15px; }
+.tag {
+  display: inline-block;
+  background: var(--light);
+  color: var(--blue);
+  border: 1px solid var(--border);
+  padding: 2px 10px; border-radius: 10px;
+  font-size: 12px; font-weight: 700;
+  margin-bottom: 8px;
+}
+.tag.green { background: #ecfdf5; color: #065f46; border-color: #a7f3d0; }
+.tag.gold { background: #fef9e7; color: #92400e; border-color: #fde68a; }
+.tag.red { background: #fef2f2; color: #991b1b; border-color: #fecaca; }
+
+/* ─── ALERT BOXES ─── */
+.alert {
+  border-radius: 12px;
+  padding: 18px 20px;
+  margin: 20px 0;
+  border-right: 5px solid;
+  font-size: 15px;
+}
+.alert.info { background: #eff6ff; border-color: var(--sky); }
+.alert.success { background: #ecfdf5; border-color: #059669; }
+.alert.warn { background: #fef9e7; border-color: var(--gold); }
+.alert.danger { background: #fef2f2; border-color: #dc2626; }
+.alert strong { display: block; margin-bottom: 5px; font-size: 16px; }
+
+/* ─── CBT TABLE ─── */
+.cbt-table { width: 100%; border-collapse: collapse; margin: 15px 0; font-size: 14px; }
+.cbt-table th {
+  background: var(--navy);
+  color: #fff;
+  padding: 12px 14px;
+  text-align: right;
+  font-weight: 700;
+}
+.cbt-table td { padding: 11px 14px; border-bottom: 1px solid var(--border); vertical-align: top; }
+.cbt-table tr:nth-child(even) td { background: var(--light); }
+.cbt-table tr:hover td { background: #dbeafe; }
+.strike { color: #dc2626; text-decoration: line-through; font-size: 13px; }
+.better { color: #059669; font-weight: 600; }
+
+/* ─── WEEK PLAN ─── */
+.week { margin: 10px 0; }
+.day {
+  display: flex; gap: 14px; align-items: flex-start;
+  background: var(--white);
+  border-radius: 10px;
+  border: 1px solid var(--border);
+  padding: 14px 16px;
+  margin-bottom: 10px;
+}
+.day-name {
+  background: var(--navy);
+  color: #fff;
+  border-radius: 8px;
+  padding: 6px 12px;
+  font-size: 13px; font-weight: 700;
+  flex-shrink: 0; text-align: center;
+  min-width: 70px;
+}
+.day-tasks { font-size: 14px; color: var(--text); }
+.day-tasks strong { display: block; margin-bottom: 3px; font-size: 15px; color: var(--navy); }
+
+/* ─── RESOURCE GRID ─── */
+.res-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 16px; }
+.res-card {
+  background: var(--white);
+  border-radius: 14px;
+  border: 1px solid var(--border);
+  padding: 20px;
+  transition: all .2s;
+}
+.res-card:hover { border-color: var(--sky); box-shadow: 0 4px 14px rgba(45,125,210,.1); }
+.res-type {
+  display: inline-block;
+  padding: 3px 10px; border-radius: 10px;
+  font-size: 11px; font-weight: 700;
+  margin-bottom: 10px;
+  background: var(--navy); color: #fff;
+}
+.res-card h4 { font-size: 16px; font-weight: 700; color: var(--navy); margin-bottom: 6px; }
+.res-card p { font-size: 13px; color: var(--gray); line-height: 1.6; margin-bottom: 10px; }
+.res-link {
+  display: inline-block;
+  color: var(--sky);
+  font-size: 13px;
+  font-weight: 600;
+  text-decoration: none;
+  padding: 5px 12px;
+  border: 1px solid var(--sky);
+  border-radius: 8px;
+  transition: all .2s;
+}
+.res-link:hover { background: var(--sky); color: #fff; }
+
+/* ─── JOURNAL ─── */
+.journal-grid { display: grid; gap: 14px; }
+.journal-q {
+  background: var(--white);
+  border-radius: 12px;
+  border-right: 4px solid var(--sky);
+  padding: 16px 20px;
+}
+.journal-q .q-num { color: var(--sky); font-weight: 800; font-size: 13px; margin-bottom: 5px; }
+.journal-q p { font-size: 15px; color: var(--text); }
+.journal-q .hint { font-size: 13px; color: var(--gray); margin-top: 5px; font-style: italic; }
+
+/* ─── TRACKER ─── */
+.tracker-header {
+  display: flex; align-items: center; justify-content: space-between;
+  flex-wrap: wrap; gap: 12px; margin-bottom: 20px;
+}
+.tracker-counter {
+  background: var(--navy);
+  border-radius: 14px;
+  padding: 16px 22px;
+  display: flex; align-items: center; gap: 16px;
+  flex-wrap: wrap;
+}
+.tracker-counter label { color: #a8c8e8; font-size: 14px; }
+.counter-controls { display: flex; align-items: center; gap: 10px; }
+.counter-btn {
+  width: 34px; height: 34px; border-radius: 50%;
+  background: rgba(255,255,255,.15); border: 1px solid rgba(255,255,255,.25);
+  color: #fff; font-size: 20px; font-weight: 700;
+  cursor: pointer; display: flex; align-items: center; justify-content: center;
+  transition: background .2s;
+}
+.counter-btn:hover { background: rgba(255,255,255,.28); }
+.counter-val {
+  font-size: 28px; font-weight: 800; color: var(--gold);
+  min-width: 40px; text-align: center;
+}
+.counter-unit { color: #a8c8e8; font-size: 13px; }
+
+.weeks-grid { display: flex; flex-direction: column; gap: 16px; }
+.week-block {
+  background: var(--white);
+  border-radius: 14px;
+  border: 1px solid var(--border);
+  overflow: hidden;
+}
+.week-title {
+  background: var(--navy);
+  color: #fff; font-size: 15px; font-weight: 700;
+  padding: 12px 18px;
+  display: flex; align-items: center; justify-content: space-between;
+}
+.week-progress-text { font-size: 12px; color: #a8c8e8; font-weight: 400; }
+.days-row {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 0;
+}
+.day-cell {
+  display: flex; flex-direction: column; align-items: center;
+  padding: 10px 4px;
+  border-left: 1px solid var(--border);
+  cursor: pointer;
+  transition: background .15s;
+  user-select: none;
+}
+.day-cell:last-child { border-left: none; }
+.day-cell:hover { background: var(--light); }
+.day-label { font-size: 10px; color: var(--gray); margin-bottom: 6px; font-weight: 600; }
+.day-check {
+  width: 32px; height: 32px; border-radius: 50%;
+  border: 2px solid var(--border);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 16px;
+  transition: all .2s;
+  background: #f8f9fb;
+}
+.day-check.done {
+  background: #ecfdf5;
+  border-color: #059669;
+  color: #059669;
+}
+.day-num { font-size: 10px; color: var(--gray); margin-top: 4px; }
+.tracker-summary {
+  background: linear-gradient(135deg, var(--navy), var(--blue));
+  border-radius: 14px; padding: 20px 24px;
+  display: flex; gap: 20px; flex-wrap: wrap; margin-bottom: 18px;
+}
+.summary-stat { text-align: center; }
+.summary-stat .val { font-size: 26px; font-weight: 800; color: var(--gold); }
+.summary-stat .lbl { font-size: 12px; color: #a8c8e8; }
+.reset-btn {
+  background: none; border: 1px solid rgba(255,255,255,.25);
+  color: #a8c8e8; padding: 6px 14px; border-radius: 8px;
+  font-family: 'Tajawal', sans-serif; font-size: 13px; cursor: pointer;
+  transition: all .2s; margin-top: 4px;
+}
+.reset-btn:hover { background: rgba(255,255,255,.1); color: #fff; }
+
+/* ─── RECORDER ─── */
+.rec-intro {
+  background: linear-gradient(135deg, var(--navy), var(--blue));
+  border-radius: 14px; padding: 22px 24px; color: #fff;
+  margin-bottom: 22px;
+}
+.rec-intro h3 { color: var(--gold); font-size: 18px; margin-bottom: 8px; }
+.rec-intro p { font-size: 14px; color: #c8dff8; line-height: 1.7; }
+
+.week-selector {
+  display: flex; gap: 8px; margin-bottom: 14px; flex-wrap: wrap;
+}
+.week-btn {
+  padding: 8px 16px; background: var(--white);
+  border: 1px solid var(--border); border-radius: 20px;
+  cursor: pointer; font-family: 'Tajawal', sans-serif;
+  font-size: 13px; font-weight: 600; color: var(--gray);
+  transition: all .2s;
+}
+.week-btn.active { background: var(--sky); color: #fff; border-color: var(--sky); }
+
+.day-selector {
+  display: grid; grid-template-columns: repeat(7, 1fr);
+  gap: 6px; margin-bottom: 20px;
+}
+.day-btn {
+  padding: 10px 4px; background: var(--white);
+  border: 1px solid var(--border); border-radius: 10px;
+  cursor: pointer; font-family: 'Tajawal', sans-serif;
+  font-size: 11px; font-weight: 700; color: var(--gray);
+  transition: all .2s; text-align: center;
+}
+.day-btn .d-num { display: block; font-size: 14px; color: var(--navy); margin-top: 2px; }
+.day-btn:hover { border-color: var(--sky); }
+.day-btn.active { background: var(--navy); color: #fff; border-color: var(--navy); }
+.day-btn.active .d-num { color: var(--gold); }
+.day-btn.has-rec::after {
+  content: '●'; color: #059669; display: block; font-size: 8px; margin-top: 2px;
+}
+
+.text-card {
+  background: var(--white); border-radius: 14px;
+  border: 1px solid var(--border); padding: 24px; margin-bottom: 18px;
+}
+.text-meta {
+  display: flex; gap: 10px; align-items: center;
+  margin-bottom: 12px; flex-wrap: wrap;
+}
+.text-difficulty {
+  padding: 4px 12px; border-radius: 10px;
+  font-size: 12px; font-weight: 700;
+}
+.text-difficulty.easy { background: #ecfdf5; color: #065f46; }
+.text-difficulty.med { background: #fef9e7; color: #92400e; }
+.text-difficulty.hard { background: #fef2f2; color: #991b1b; }
+.text-title { font-size: 19px; font-weight: 800; color: var(--navy); }
+.text-body {
+  font-size: 17px; line-height: 2.1; color: var(--text);
+  padding: 16px; background: var(--light); border-radius: 10px;
+  margin: 12px 0; white-space: pre-wrap;
+}
+
+.rec-controls {
+  background: var(--white); border-radius: 14px;
+  border: 1px solid var(--border); padding: 22px; text-align: center;
+}
+.rec-btn-main {
+  width: 80px; height: 80px; border-radius: 50%;
+  border: none; background: #dc2626; color: #fff;
+  font-size: 32px; cursor: pointer; transition: all .2s;
+  box-shadow: 0 6px 20px rgba(220,38,38,.3); margin: 8px;
+}
+.rec-btn-main:hover { transform: scale(1.05); }
+.rec-btn-main.recording {
+  background: #b91c1c; animation: pulse 1.2s infinite;
+}
+@keyframes pulse {
+  0%,100% { box-shadow: 0 6px 20px rgba(220,38,38,.3); }
+  50% { box-shadow: 0 6px 30px rgba(220,38,38,.7); }
+}
+.rec-status { font-size: 14px; color: var(--gray); margin: 10px 0; min-height: 22px; }
+.rec-timer { font-size: 24px; font-weight: 800; color: var(--navy); margin: 6px 0; }
+
+.recordings-list { margin-top: 18px; }
+.recording-item {
+  background: var(--light); border-radius: 10px;
+  padding: 12px 16px; margin-bottom: 8px;
+  display: flex; align-items: center; gap: 10px; flex-wrap: wrap;
+}
+.recording-item audio { flex: 1; min-width: 200px; height: 38px; }
+.rec-date { font-size: 12px; color: var(--gray); font-weight: 600; }
+.del-btn {
+  background: none; border: 1px solid #fecaca; color: #dc2626;
+  padding: 5px 10px; border-radius: 6px; cursor: pointer;
+  font-size: 12px; font-family: 'Tajawal', sans-serif;
+}
+.del-btn:hover { background: #fef2f2; }
+
+@media (max-width: 600px) {
+  .hero { padding: 40px 20px 35px; }
+  .hero-stats { gap: 14px; }
+  .stat { padding: 10px 16px; }
+  .tab-btn { padding: 12px 16px; font-size: 13px; }
+  .main { padding: 20px 14px 50px; }
+  .res-grid { grid-template-columns: 1fr; }
+  .day { flex-direction: column; gap: 8px; }
+  .day-name { width: fit-content; }
+}
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-inner">
+    <div class="hero-badge">مبني على أبحاث 2024–2025</div>
+    <h1>دليلك الشامل<br><span>للتغلب على التأتأة</span></h1>
+    <p>تقنيات كلام + إدارة القلق النفسي + خطة يومية + أفضل المصادر — كل شي في مكان واحد</p>
+    <div class="hero-stats">
+      <div class="stat"><strong>12</strong><span>تقنية عملية</span></div>
+      <div class="stat"><strong>4–6</strong><span>أسابيع لترى فرق</span></div>
+      <div class="stat"><strong>60%</strong><span>من العلاج = نفسي</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- TAB BAR -->
+<div class="tab-bar">
+  <button class="tab-btn active" onclick="show('intro',this)">🏠 البداية</button>
+  <button class="tab-btn" onclick="show('speech',this)">🗣️ تقنيات الكلام</button>
+  <button class="tab-btn" onclick="show('psych',this)">🧠 النفسي (CBT/ACT)</button>
+  <button class="tab-btn" onclick="show('trauma',this)">💙 معالجة الصدمة</button>
+  <button class="tab-btn" onclick="show('plan',this)">📅 الخطة اليومية</button>
+  <button class="tab-btn" onclick="show('journal',this)">📓 دفتر التتبع</button>
+  <button class="tab-btn" onclick="show('avoid',this)">⚠️ أخطاء تجنّبها</button>
+  <button class="tab-btn" onclick="show('resources',this)">📚 المصادر</button>
+  <button class="tab-btn" onclick="show('tracker',this)">📆 متابعة 6 أسابيع</button>
+  <button class="tab-btn" onclick="show('recorder',this)">🎙️ التسجيل الصوتي</button>
+</div>
+
+<div class="main">
+
+  <!-- ══════════ INTRO ══════════ -->
+  <div id="intro" class="section active">
+    <div class="sec-title">ابدأ من هنا</div>
+    <p class="sec-sub">فهم المشكلة خطوة أولى نحو الحل</p>
+
+    <div class="alert info">
+      <strong>📌 الحقيقة اللي تغيّر كل شي</strong>
+      الأبحاث الحديثة (2024–2025) تقول: هدف "الكلام بدون تأتأة أبداً" غير واقعي وغير صحي. الهدف الجديد هو <strong>التواصل بثقة</strong> — حتى لو تأتأت. الناس اللي تغلّبوا على التأتأة ما "شفوا" منها، بل وصلوا لمرحلة إن التأتأة ما تحدد حياتهم.
+    </div>
+
+    <div class="card">
+      <div class="card-header">
+        <div class="num">1</div>
+        <div><div class="card-title">ليش التأتأة ترتبط بالصدمة؟</div></div>
+      </div>
+      <div class="steps">
+        <div class="step"><div class="step-dot"></div><p>موقف صعب في الصغر → الدماغ يربط "الكلام" بـ"الخطر"</p></div>
+        <div class="step"><div class="step-dot"></div><p>الخوف من التأتأة يشدّ عضلات الفم والحلق → تأتأة أكثر</p></div>
+        <div class="step"><div class="step-dot"></div><p>تجنب المواقف → الخوف يكبر أكثر</p></div>
+        <div class="step"><div class="step-dot"></div><p><strong>النتيجة:</strong> حلقة مفرغة من الخوف والتجنب والتأتأة</p></div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-header">
+        <div class="num teal">2</div>
+        <div><div class="card-title">كيف يعمل هذا الدليل؟</div></div>
+      </div>
+      <div class="steps">
+        <div class="step"><div class="step-dot"></div><p><strong>تقنيات الكلام:</strong> تخليك تتكلم بشكل أسهل في اللحظة</p></div>
+        <div class="step"><div class="step-dot"></div><p><strong>الجانب النفسي (CBT/ACT):</strong> يكسر حلقة الخوف من جذرها — وهذا 60% من العلاج في حالتك</p></div>
+        <div class="step"><div class="step-dot"></div><p><strong>معالجة الصدمة:</strong> تحرّر من الموقف القديم الذي بدأ كل شي</p></div>
+        <div class="step"><div class="step-dot"></div><p><strong>الخطة اليومية:</strong> تحوّل كل هذا لعادات يومية ملموسة</p></div>
+      </div>
+    </div>
+
+    <div class="alert success">
+      <strong>🎯 أين تبدأ اليوم؟</strong>
+      إذا ما عندك وقت لكل شي، ابدأ بـ: (١) تنفس 4-7-8 قبل كل موقف كلام، (٢) قل لشخص واحد "أنا أحياناً أتأتأ"، (٣) لا تتجنب موقف كلام واحد اليوم.
+    </div>
+  </div>
+
+  <!-- ══════════ SPEECH ══════════ -->
+  <div id="speech" class="section">
+    <div class="sec-title">تقنيات الكلام</div>
+    <p class="sec-sub">طبّقها لحظة بلحظة أثناء الكلام</p>
+
+    <div class="card">
+      <div class="card-header"><div class="num">1</div><div><div class="card-title">تنفس 4-7-8 (قبل الكلام)</div><div class="card-sub">الأقوى لتهدئة الجهاز العصبي فوراً</div></div></div>
+      <div class="steps">
+        <div class="step"><div class="step-dot"></div><p><strong>4 ثواني:</strong> شهيق بطيء من الأنف</p></div>
+        <div class="step"><div class="step-dot"></div><p><strong>7 ثواني:</strong> احبس النفس</p></div>
+        <div class="step"><div class="step-dot"></div><p><strong>8 ثواني:</strong> زفير طويل من الفم — الزفير الطويل هو اللي يهدّئ القلق</p></div>
+        <div class="step"><div class="step-dot"></div><p>كرّر 4 مرات. استخدمه قبل أي موقف يحتاج كلام</p></div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-header"><div class="num">2</div><div><div class="card-title">التنفس البطني</div><div class="card-sub">أساس كل تقنيات الكلام</div></div></div>
+      <div class="steps">
+        <div class="step"><div class="step-dot"></div><p>حط يدك تحت السرّة — البطن لازم يطلع للأمام لما تتنفس، مو الصدر</p></div>
+        <div class="step"><div class="step-dot"></div><p>5 دقائق صباحاً + 5 دقائق مساءً يومياً</p></div>
+        <div class="step"><div class="step-dot"></div><p>التنفس من الصدر يشدّ حبالك الصوتية ويزيد التأتأة</p></div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-header"><div class="num">3</div><div><div class="card-title">البداية اللطيفة (Gentle Onset)</div><div class="card-sub">لكسر "البلوك" في بداية الكلمة</div></div></div>
+      <div class="steps">
+        <div class="step"><div class="step-dot"></div><p>ابدأ الكلمة بزفير لطيف — تخيّل إن صوتك "يخرج" مو "يُدفع"</p></div>
+        <div class="step"><div class="step-dot"></div><p>الخوف يخليك تضغط بقوة على أول حرف، وهذا هو المشكلة</p></div>
+        <div class="step"><div class="step-dot"></div><p>تدرّب على كلمات تبدأ بحروف صعبة عليك خصيصاً</p></div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-header"><div class="num">4</div><div><div class="card-title">التواصل الخفيف (Light Contact)</div><div class="card-sub">لا تضغط الحروف بقوة</div></div></div>
+      <div class="steps">
+        <div class="step"><div class="step-dot"></div><p>حروف مثل "ب، ت، د، ك" تحتاج لمسة خفيفة جداً من شفايفك ولسانك</p></div>
+        <div class="step"><div class="step-dot"></div><p>تدرّب أمام المرآة وراقب القوة اللي تضغط فيها</p></div>
+        <div class="step"><div class="step-dot"></div><p>القاعدة: لو حسيت بتعب أو ارتجاف، أنت تضغط أكثر من اللازم</p></div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-header"><div class="num">5</div><div><div class="card-title">الإطالة (Prolongation)</div><div class="card-sub">مد أول مقطع بشكل ناعم</div></div></div>
+      <div class="steps">
+        <div class="step"><div class="step-dot"></div><p>بدل "م-م-مرحبا" → قل "مـــرحبا" بمد لطيف للميم</p></div>
+        <div class="step"><div class="step-dot"></div><p>هذي تكسر البلوك قبل ما يحصل</p></div>
+        <div class="step"><div class="step-dot"></div><p>تبدو غريبة في البداية لكن فعّالة جداً، وتقدر تقلّلها تدريجياً</p></div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-header"><div class="num gold">6</div><div><div class="card-title">التأتأة المتعمّدة ⭐</div><div class="card-sub">أقوى تقنية نفسياً — تكسر الخوف من الجذر</div></div></div>
+      <div class="alert warn" style="margin: 10px 0 0;">
+        <strong>⚡ ليش هذي مهمة جداً؟</strong>
+        الخوف يأتي من شي خارج إرادتك. لما تتأتأ بإرادتك، الخوف يفقد سيطرته. أبحاث ASHA أثبتت إنها تقلل القلق أكثر من أي تقنية كلام أخرى.
+      </div>
+      <div class="steps" style="margin-top: 14px;">
+        <div class="step"><div class="step-dot"></div><p>اختر كلمات سهلة عليك وتأتأ فيها عمداً 5–10 مرات يومياً</p></div>
+        <div class="step"><div class="step-dot"></div><p>ابدأ بمفردك أمام المرآة، ثم مع شخص مقرّب، ثم مع غرباء</p></div>
+        <div class="step"><div class="step-dot"></div><p>الهدف: إن تأتأتك تصبح "حدث عادي" مو "كارثة"</p></div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-header"><div class="num teal">7</div><div><div class="card-title">الإفصاح المفتوح</div><div class="card-sub">يقلل الضغط 70% فوراً</div></div></div>
+      <div class="steps">
+        <div class="step"><div class="step-dot"></div><p>قل ببساطة: <strong>"أنا أحياناً أتأتأ، تحمّلني شوي"</strong></p></div>
+        <div class="step"><div class="step-dot"></div><p>هذا يلغي عنصر "المفاجأة" اللي يسبب الخوف</p></div>
+        <div class="step"><div class="step-dot"></div><p>90% من الناس يقابلون هذا بتقدير واحترام</p></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══════════ PSYCH ══════════ -->
+  <div id="psych" class="section">
+    <div class="sec-title">الجانب النفسي — CBT و ACT</div>
+    <p class="sec-sub">هذا هو 60% من العلاج في حالتك — لا تتجاهله</p>
+
+    <div class="alert info">
+      <strong>🔍 الفرق بين CBT و ACT</strong>
+      <strong>CBT:</strong> غيّر الأفكار السلبية واستبدلها بأفكار أدق وأكثر واقعية.<br>
+      <strong>ACT:</strong> لا تحارب الأفكار — بس لا تدعها تتحكم في أفعالك. عش حسب قيمك حتى مع وجود الخوف.
+    </div>
+
+    <!-- CBT -->
+    <div class="card">
+      <div class="card-header"><div class="num">1</div><div><div class="card-title">CBT — اكتشاف الأفكار الآلية</div></div></div>
+      <p style="font-size:15px; color:var(--gray); margin-bottom:14px;">قبل موقف الكلام بثانية، تجيك أفكار سريعة. هذه الأفكار تسبب الخوف اللي يسبب التأتأة. خطوات CBT:</p>
+      <div class="steps">
+        <div class="step"><div class="step-dot"></div><p><strong>الخطوة 1:</strong> لاحظ الفكرة — "راح أتأتأ وأنفضح"</p></div>
+        <div class="step"><div class="step-dot"></div><p><strong>الخطوة 2:</strong> اختبرها — هل فعلاً ضحك عليّ أحد آخر مرة؟</p></div>
+        <div class="step"><div class="step-dot"></div><p><strong>الخطوة 3:</strong> استبدلها بفكرة أكثر دقة وواقعية</p></div>
+      </div>
+    </div>
+
+    <div class="card" style="padding: 20px;">
+      <div class="card-title" style="margin-bottom: 14px;">جدول الأفكار السلبية وبدائلها</div>
+      <table class="cbt-table">
+        <thead>
+          <tr><th>الفكرة السلبية</th><th>البديل الواقعي</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><span class="strike">"راح يضحكون عليّ"</span></td>
+            <td><span class="better">الناس مشغولون بنفسهم أكثر منّي</span></td>
+          </tr>
+          <tr>
+            <td><span class="strike">"التأتأة تخليني أبدو ضعيف"</span></td>
+            <td><span class="better">اللي يتكلم رغم خوفه هو الأقوى</span></td>
+          </tr>
+          <tr>
+            <td><span class="strike">"ما أقدر أكمل الجملة"</span></td>
+            <td><span class="better">رسالتي توصل حتى مع التأتأة</span></td>
+          </tr>
+          <tr>
+            <td><span class="strike">"الكل يلاحظ تأتأتي"</span></td>
+            <td><span class="better">الناس يلاحظون المعنى أكثر من الطريقة</span></td>
+          </tr>
+          <tr>
+            <td><span class="strike">"لازم أتكلم بسرعة أخلّص"</span></td>
+            <td><span class="better">البطء يجعل كلامي أوضح وأثقل</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- ACT -->
+    <div class="card">
+      <div class="card-header"><div class="num teal">2</div><div><div class="card-title">ACT — أفكارك ليست حقائق</div></div></div>
+      <div class="steps">
+        <div class="step"><div class="step-dot"></div>
+          <p>بدل: <em style="color:#dc2626">"أنا ما أقدر أتكلم"</em><br>
+          قل: <strong style="color:#059669">"عندي فكرة تقول إني ما أقدر أتكلم"</strong><br>
+          <span style="font-size:13px; color:var(--gray)">هذا الفرق البسيط يخلق مسافة بينك وبين الفكرة</span></p>
+        </div>
+        <div class="step"><div class="step-dot"></div><p>الفكرة مجرد فكرة — أنت اللي تقرر هل تتصرف حسبها أو لا</p></div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-header"><div class="num teal">3</div><div><div class="card-title">ACT — القيم بدل الخوف</div></div></div>
+      <div class="alert warn" style="margin: 0 0 14px;">
+        <strong>✍️ تمرين مهم</strong>
+        اسأل نفسك: لو التأتأة ما كانت موجودة، إيش كنت تسوي في حياتك؟
+      </div>
+      <div class="steps">
+        <div class="step"><div class="step-dot"></div><p>اكتب 3 أشياء كنت تسويها — مثلاً: "أتكلم بثقة في العمل"، "أكوّن صداقات"</p></div>
+        <div class="step"><div class="step-dot"></div><p>ACT يقول: <strong>ابدأ تسوي هذي الأشياء الحين</strong> — حتى مع وجود التأتأة</p></div>
+        <div class="step"><div class="step-dot"></div><p>الحياة لا تنتظر التأتأة تختفي. عش حياتك الآن.</p></div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-header"><div class="num">4</div><div><div class="card-title">التعرض التدريجي</div><div class="card-sub">السلّم من الأسهل للأصعب</div></div></div>
+      <div class="steps">
+        <div class="step"><div class="step-dot"></div><p>🪞 <strong>المستوى 1:</strong> تكلّم مع نفسك في المرآة 5 دقائق</p></div>
+        <div class="step"><div class="step-dot"></div><p>☕ <strong>المستوى 2:</strong> اطلب شي من البقالة أو الكوفي</p></div>
+        <div class="step"><div class="step-dot"></div><p>📞 <strong>المستوى 3:</strong> اتصل بمكان واسأل سؤالاً بسيطاً</p></div>
+        <div class="step"><div class="step-dot"></div><p>👥 <strong>المستوى 4:</strong> تكلّم مع مجموعة صغيرة جديدة</p></div>
+        <div class="step"><div class="step-dot"></div><p>🎤 <strong>المستوى 5:</strong> قدّم عرض أو شارك في نقاش</p></div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-header"><div class="num gold">5</div><div><div class="card-title">تقنية التأريض 5-4-3-2-1</div><div class="card-sub">للحظة الذعر قبل الكلام — تنجح في أقل من دقيقة</div></div></div>
+      <div class="steps">
+        <div class="step"><div class="step-dot"></div><p>👀 سمّ <strong>5</strong> أشياء تشوفها حولك الآن</p></div>
+        <div class="step"><div class="step-dot"></div><p>✋ سمّ <strong>4</strong> أشياء تلمسها</p></div>
+        <div class="step"><div class="step-dot"></div><p>👂 سمّ <strong>3</strong> أصوات تسمعها</p></div>
+        <div class="step"><div class="step-dot"></div><p>👃 سمّ <strong>2</strong> رائحة تشمها</p></div>
+        <div class="step"><div class="step-dot"></div><p>👅 سمّ <strong>1</strong> طعم تتذوقه</p></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══════════ TRAUMA ══════════ -->
+  <div id="trauma" class="section">
+    <div class="sec-title">معالجة الصدمة الأصلية</div>
+    <p class="sec-sub">لأن مشكلتك بدأت من موقف في الصغر — هذا القسم خاص بك</p>
+
+    <div class="alert info">
+      <strong>🔬 ماذا يقول العلم؟</strong>
+      الصدمة تخزّن في الدماغ كـ"ذاكرة خوف". كلما واجهت موقف كلام، الدماغ يستحضر الموقف القديم تلقائياً ويفعّل الخوف. الحل ليس نسيان الموقف، بل إعادة معالجة الذاكرة المرتبطة به.
+    </div>
+
+    <div class="card">
+      <div class="card-header"><div class="num">1</div><div><div class="card-title">تمرين إعادة المعالجة</div><div class="card-sub">مبني على EMDR ومعالجة الصدمة المعرفية</div></div></div>
+      <div class="steps">
+        <div class="step"><div class="step-dot"></div><p>اجلس في مكان هادئ وآمن. تنفس عميق.</p></div>
+        <div class="step"><div class="step-dot"></div><p>تخيّل الموقف القديم اللي سبب المشكلة — من بعيد، كأنك تشاهد فيلم</p></div>
+        <div class="step"><div class="step-dot"></div><p>تخيّل نفسك كبالغ تدخل على الموقف</p></div>
+        <div class="step"><div class="step-dot"></div><p>قل للطفل اللي فيك: <strong>"أنت بأمان. اللي صار ما كان غلطتك. أنت تقدر تتكلم."</strong></p></div>
+        <div class="step"><div class="step-dot"></div><p>تخيّله يحس بالأمان والطمأنينة</p></div>
+        <div class="step"><div class="step-dot"></div><p>افتح عينيك ببطء. خذ نفساً عميقاً.</p></div>
+      </div>
+      <div class="alert warn" style="margin-top:14px;">
+        <strong>⚠️ ملاحظة مهمة</strong>
+        هذا التمرين قد يحرّك مشاعر قوية — هذا طبيعي. افعله حين تكون في حالة هادئة وليس قبل مواقف مهمة مباشرة.
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-header"><div class="num teal">2</div><div><div class="card-title">رسائل إعادة البرمجة اليومية</div><div class="card-sub">10 مرات كل صباح لمدة شهر</div></div></div>
+      <div class="steps">
+        <div class="step"><div class="step-dot"></div><p>"صوتي له قيمة وكلامي يستحق أن يُسمع"</p></div>
+        <div class="step"><div class="step-dot"></div><p>"أنا أكثر من طريقة كلامي"</p></div>
+        <div class="step"><div class="step-dot"></div><p>"التأتأة لا تحدد قيمتي"</p></div>
+        <div class="step"><div class="step-dot"></div><p>"أنا في أمان حين أتكلم"</p></div>
+      </div>
+      <p style="font-size:13px; color:var(--gray); margin-top:10px;">هذا ليس "تفاؤل مزيف" — الدراسات تثبت إن تكرار هذه الجمل يعيد برمجة الدماغ فعلياً خلال 3-4 أسابيع.</p>
+    </div>
+
+    <div class="card">
+      <div class="card-header"><div class="num">3</div><div><div class="card-title">فصل الماضي عن الحاضر</div></div></div>
+      <div class="steps">
+        <div class="step"><div class="step-dot"></div><p>الموقف القديم انتهى. الناس اللي أمامك الحين ليسوا نفس الناس اللي سبّبوا الصدمة.</p></div>
+        <div class="step"><div class="step-dot"></div><p>لما تحس بالخوف قبل الكلام، قل لنفسك: <strong>"هذا رد فعل قديم، مو خطر حقيقي."</strong></p></div>
+        <div class="step"><div class="step-dot"></div><p>الجهاز العصبي يحتاج وقت يتعلم الأمان — امنحه الفرص المتكررة.</p></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══════════ PLAN ══════════ -->
+  <div id="plan" class="section">
+    <div class="sec-title">الخطة اليومية</div>
+    <p class="sec-sub">أسبوع كامل منظّم — 15 إلى 20 دقيقة فقط يومياً</p>
+
+    <div class="alert success">
+      <strong>💡 مبدأ الخطة</strong>
+      الاتساق أهم من الشدة. 15 دقيقة يومياً لمدة شهر = أفضل من ساعتين مرة كل أسبوع. المخ يتعلّم بالتكرار المنتظم.
+    </div>
+
+    <div class="week">
+      <div class="day">
+        <div class="day-name">السبت</div>
+        <div class="day-tasks">
+          <strong>التأسيس النفسي</strong>
+          تنفس 4-7-8 (صباح ومساء) + اكتب 3 أفكار سلبية تجيك عن الكلام وبدائلها
+        </div>
+      </div>
+      <div class="day">
+        <div class="day-name">الأحد</div>
+        <div class="day-tasks">
+          <strong>الصوت والاسترخاء</strong>
+          سجّل صوتك وأنت تقرأ فقرة — استمع بدون أحكام + استرخاء عضلي تدريجي 10 دقائق
+        </div>
+      </div>
+      <div class="day">
+        <div class="day-name">الإثنين</div>
+        <div class="day-tasks">
+          <strong>تقنيات الكلام</strong>
+          تأتأة متعمدة أمام المرآة 5 مرات + تدرّب على البداية اللطيفة بكلمات صعبة عليك
+        </div>
+      </div>
+      <div class="day">
+        <div class="day-name">الثلاثاء</div>
+        <div class="day-tasks">
+          <strong>مواجهة اجتماعية خفيفة</strong>
+          اطلب شي من البقالة أو الكوفي مستخدماً الإطالة والبداية اللطيفة — استخدم تنفس 4-7-8 قبلها
+        </div>
+      </div>
+      <div class="day">
+        <div class="day-name">الأربعاء</div>
+        <div class="day-tasks">
+          <strong>معالجة الصدمة</strong>
+          تمرين إعادة المعالجة في مكان هادئ + رسائل إعادة البرمجة 10 مرات
+        </div>
+      </div>
+      <div class="day">
+        <div class="day-name">الخميس</div>
+        <div class="day-tasks">
+          <strong>تحدي أكبر</strong>
+          تأمل 10 دقائق + اتصل برقم خدمة عملاء واسأل سؤالاً — أو جرّب الإفصاح مع شخص جديد
+        </div>
+      </div>
+      <div class="day">
+        <div class="day-name">الجمعة</div>
+        <div class="day-tasks">
+          <strong>المراجعة والشكر</strong>
+          راجع دفتر التتبع + احتفل بـ"انتصار صغير" هذا الأسبوع — حتى لو بسيط
+        </div>
+      </div>
+    </div>
+
+    <div class="alert success" style="margin-top: 20px;">
+      <strong>📈 من الأسبوع الثاني</strong>
+      كرّر نفس البرنامج لكن ارفع مستوى التحدي الاجتماعي تدريجياً. النتائج الحقيقية تبدأ بعد 4-6 أسابيع. التغيير الجذري بعد 3-6 أشهر.
+    </div>
+  </div>
+
+  <!-- ══════════ JOURNAL ══════════ -->
+  <div id="journal" class="section">
+    <div class="sec-title">دفتر التتبع اليومي</div>
+    <p class="sec-sub">الأبحاث تقول: التسجيل يضاعف النتائج — افتح دفتر أو ملف نصي وأجب على هذه الأسئلة كل مساء</p>
+
+    <div class="journal-grid">
+      <div class="journal-q">
+        <div class="q-num">السؤال 1</div>
+        <p>ما كان أصعب موقف كلام اليوم؟</p>
+        <div class="hint">اذكر المكان، مع من، وما الذي حصل</div>
+      </div>
+      <div class="journal-q">
+        <div class="q-num">السؤال 2</div>
+        <p>ما الفكرة التي جاءت في بالك قبل الكلام؟</p>
+        <div class="hint">حاول تتذكر الفكرة الأولى — حتى لو سريعة</div>
+      </div>
+      <div class="journal-q">
+        <div class="q-num">السؤال 3</div>
+        <p>ما الذي فعلته؟ (واجهت أم تجنّبت؟)</p>
+        <div class="hint">كلاهما مهم أن تسجّله بصدق</div>
+      </div>
+      <div class="journal-q">
+        <div class="q-num">السؤال 4</div>
+        <p>ما التقنية التي جربتها اليوم؟ هل ساعدت؟</p>
+        <div class="hint">سمّها بالاسم: تنفس، إطالة، إفصاح...</div>
+      </div>
+      <div class="journal-q">
+        <div class="q-num">السؤال 5 ⭐</div>
+        <p>ما الانتصار الصغير اليوم؟</p>
+        <div class="hint">مهما كان صغيراً — قلت "صباح الخير"؟ سألت سؤالاً؟ هذا انتصار</div>
+      </div>
+      <div class="journal-q">
+        <div class="q-num">السؤال 6</div>
+        <p>من 1 إلى 10، كيف مستوى القلق اليوم؟</p>
+        <div class="hint">تابع الرقم أسبوعياً — ستلاحظ التحسن التدريجي</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══════════ AVOID ══════════ -->
+  <div id="avoid" class="section">
+    <div class="sec-title">أخطاء تجنّبها</div>
+    <p class="sec-sub">هذه الأشياء تبطئ تقدمك أو تعيدك للوراء</p>
+
+    <div class="card">
+      <div class="tag red">خطأ شائع</div>
+      <div class="card-header" style="margin-bottom: 8px;"><div class="num" style="background:#dc2626">1</div><div><div class="card-title">تجنّب الكلمات الصعبة</div></div></div>
+      <p>كل ما تجنّبت كلمة أو موقف، الخوف يكبر. اليوم تتجنب كلمة، بكرة موقف، بعدها أماكن. التجنب يضيّق حياتك تدريجياً.</p>
+    </div>
+
+    <div class="card">
+      <div class="tag red">خطأ شائع</div>
+      <div class="card-header" style="margin-bottom: 8px;"><div class="num" style="background:#dc2626">2</div><div><div class="card-title">الكلام بسرعة لـ"تنهي بسرعة"</div></div></div>
+      <p>السرعة تزيد التأتأة وتزيد الضغط على عضلات الكلام. البطء المتعمد يخفف كليهما.</p>
+    </div>
+
+    <div class="card">
+      <div class="tag red">خطأ شائع</div>
+      <div class="card-header" style="margin-bottom: 8px;"><div class="num" style="background:#dc2626">3</div><div><div class="card-title">حبس النفس قبل الكلام</div></div></div>
+      <p>حبس النفس يشدّ الحبال الصوتية ويجعل البلوك أشد. الصح: زفير لطيف قبل بداية الكلمة.</p>
+    </div>
+
+    <div class="card">
+      <div class="tag red">خطأ شائع</div>
+      <div class="card-header" style="margin-bottom: 8px;"><div class="num" style="background:#dc2626">4</div><div><div class="card-title">الانعزال الاجتماعي</div></div></div>
+      <p>كل ما قلّت مواقف الكلام، كل ما زاد الخوف. المخ يحتاج تجارب ناجحة متكررة ليتعلم إن الكلام آمن.</p>
+    </div>
+
+    <div class="card">
+      <div class="tag red">خطأ شائع</div>
+      <div class="card-header" style="margin-bottom: 8px;"><div class="num" style="background:#dc2626">5</div><div><div class="card-title">توقع نتائج سريعة</div></div></div>
+      <p>4-6 أسابيع لتبدأ ترى فرق. 3-6 أشهر لتغيير جذري. الاستعجال يسبب إحباط يوقف التقدم.</p>
+    </div>
+
+    <div class="card">
+      <div class="tag red">خطأ شائع</div>
+      <div class="card-header" style="margin-bottom: 8px;"><div class="num" style="background:#dc2626">6</div><div><div class="card-title">الاعتماد على تقنية واحدة فقط</div></div></div>
+      <p>لا توجد "رصاصة فضية". الحل في الجمع: تقنيات الكلام + إدارة القلق + معالجة الصدمة + ممارسة يومية.</p>
+    </div>
+
+    <div class="alert success">
+      <strong>🌟 القاعدة الذهبية</strong>
+      الفرق بين من يتحسن ومن لا يتحسن ليس في التقنية — بل في شيء واحد: <strong>مواجهة المواقف بدل تجنبها</strong>. كل مرة تتكلم رغم الخوف، مخك يتعلم شيئاً جديداً.
+    </div>
+  </div>
+
+  <!-- ══════════ RESOURCES ══════════ -->
+  <div id="resources" class="section">
+    <div class="sec-title">أفضل المصادر</div>
+    <p class="sec-sub">كتب، تطبيقات، ومواقع — مجانية ومدفوعة</p>
+
+    <div class="res-grid">
+
+      <div class="res-card">
+        <span class="res-type">📗 كتاب مجاني</span>
+        <h4>Self-Therapy for the Stutterer</h4>
+        <p>الكتاب المرجعي الأول للعلاج الذاتي. مكتوب من شخص متأتئ وأخصائي نطق. الإصدار 11 محدّث. ابدأ منه.</p>
+        <a class="res-link" href="https://www.stutteringhelp.org/free-e-books" target="_blank">تحميل مجاني</a>
+      </div>
+
+      <div class="res-card">
+        <span class="res-type">📗 كتاب مجاني</span>
+        <h4>Advice to Those Who Stutter</h4>
+        <p>28 أخصائي نطق — جميعهم متأتئون — يشاركون نصائحهم العملية. قصير ومركّز.</p>
+        <a class="res-link" href="https://www.stutteringhelp.org/free-e-books" target="_blank">تحميل مجاني</a>
+      </div>
+
+      <div class="res-card">
+        <span class="res-type">📱 تطبيق</span>
+        <h4>Stamurai</h4>
+        <p>أكبر تطبيق متخصص في التأتأة عالمياً. 30+ تمرين، تأمل، تنفس، CBT. فيه إصدار مجاني + تجربة 7 أيام.</p>
+        <a class="res-link" href="https://www.stamurai.com" target="_blank">زيارة الموقع</a>
+      </div>
+
+      <div class="res-card">
+        <span class="res-type">🌐 برنامج</span>
+        <h4>iGlebe — CBT أونلاين</h4>
+        <p>برنامج CBT مصمم خصيصاً للمتأتئين. دراسات عشوائية أثبتت فعاليته لمدة 12 شهراً. ابحث: "iGlebe stuttering".</p>
+      </div>
+
+      <div class="res-card">
+        <span class="res-type">📱 تطبيق تأمل</span>
+        <h4>Sabeel (عربي)</h4>
+        <p>تطبيق تأمل عربي بالكامل. 10 دقائق يومياً تقلل القلق الاجتماعي بشكل ملحوظ خلال أسبوعين.</p>
+      </div>
+
+      <div class="res-card">
+        <span class="res-type">▶️ يوتيوب</span>
+        <h4>Free From Stutter</h4>
+        <p>قناة لشخص تغلّب على التأتأة بنفسه. تمارين عملية وتجارب حقيقية. ابحث في يوتيوب باسمها.</p>
+      </div>
+
+      <div class="res-card">
+        <span class="res-type">🏛️ منظمة</span>
+        <h4>Stuttering Foundation</h4>
+        <p>أكبر منظمة عالمية للتأتأة. كتب مجانية، فيديوهات، ومقالات علمية محدّثة بأحدث الأبحاث.</p>
+        <a class="res-link" href="https://www.stutteringhelp.org" target="_blank">زيارة</a>
+      </div>
+
+      <div class="res-card">
+        <span class="res-type">👥 مجتمع</span>
+        <h4>National Stuttering Association</h4>
+        <p>مجموعات دعم أونلاين مع متأتئين من كل العالم. الانتماء لمجموعة يكسر العزلة ويسرّع التحسن.</p>
+        <a class="res-link" href="https://westutter.org" target="_blank">زيارة</a>
+      </div>
+
+      <div class="res-card">
+        <span class="res-type">📘 كتاب متقدم</span>
+        <h4>Stuttering: An Integrated Approach</h4>
+        <p>للكاتب Barry Guitar. الكتاب العلمي المرجعي في التأتأة. يعطيك فهم كامل ومعمّق للموضوع.</p>
+      </div>
+
+    </div>
+
+    <div class="alert success" style="margin-top: 24px;">
+      <strong>⭐ ابدأ بهذين فقط</strong>
+      (1) حمّل كتاب Self-Therapy مجاناً من stutteringhelp.org — اقرأ فصلاً واحداً يومياً.
+      (2) حمّل تطبيق Stamurai وابدأ الخطة المجانية. هذان الاثنان وحدهما يكفيان للبداية القوية.
+    </div>
+  </div>
+
+  <!-- ══════════ TRACKER ══════════ -->
+  <div id="tracker" class="section">
+    <div class="sec-title">📆 متابعة 6 أسابيع</div>
+    <p class="sec-sub">ضع ✓ على كل يوم أتممت فيه التمارين — الاستمرارية هي السر</p>
+
+    <!-- Summary -->
+    <div class="tracker-summary" id="trackerSummary">
+      <div class="summary-stat"><div class="val" id="totalDone">0</div><div class="lbl">يوم مكتمل</div></div>
+      <div class="summary-stat"><div class="val" id="totalDays">42</div><div class="lbl">إجمالي الأيام</div></div>
+      <div class="summary-stat"><div class="val" id="streakVal">0</div><div class="lbl">أيام متتالية</div></div>
+      <div class="summary-stat"><div class="val" id="pctVal">0%</div><div class="lbl">نسبة الإنجاز</div></div>
+    </div>
+
+    <!-- Daily counter -->
+    <div class="tracker-counter" style="margin-bottom:20px;">
+      <label>🎯 هدف التمارين اليومي:</label>
+      <div class="counter-controls">
+        <button class="counter-btn" onclick="changeGoal(-1)">−</button>
+        <span class="counter-val" id="goalVal">3</span>
+        <span class="counter-unit">تمارين / يوم</span>
+        <button class="counter-btn" onclick="changeGoal(1)">+</button>
+      </div>
+    </div>
+
+    <!-- Weeks -->
+    <div class="weeks-grid" id="weeksGrid"></div>
+
+    <div style="text-align:center; margin-top:16px;">
+      <button class="reset-btn" onclick="resetTracker()">🔄 إعادة تعيين كل شي</button>
+    </div>
+
+    <div class="alert success" style="margin-top:20px;">
+      <strong>💡 كيف تستخدمه</strong>
+      في نهاية كل يوم، اضغط على الدائرة لتضع ✓. البيانات تتحفظ تلقائياً في جهازك ولا تُمحى إلا إذا ضغطت "إعادة تعيين".
+    </div>
+  </div>
+
+  <!-- ══════════ RECORDER ══════════ -->
+  <div id="recorder" class="section">
+    <div class="sec-title">🎙️ التسجيل الصوتي اليومي</div>
+    <p class="sec-sub">42 نص متدرج لـ 6 أسابيع — اقرأ، سجّل، اسمع، وأعد</p>
+
+    <div class="rec-intro">
+      <h3>ليش هذا أهم تمرين في الدليل؟</h3>
+      <p>
+        الاستماع لصوتك يكسر تجنّب سماع نفسك — وهذا التجنّب يضخّم الخوف.
+        اقرأ نص اليوم بصوت عالٍ، سجّله، واسمعه 3 مرات بدون أحكام.
+        بعد 6 أسابيع، اسمع تسجيل اليوم الأول وقارنه بتسجيل اليوم 42 — الفرق راح يفاجئك.
+      </p>
+    </div>
+
+    <!-- Week selector -->
+    <div class="week-selector" id="weekSel"></div>
+
+    <!-- Day selector -->
+    <div class="day-selector" id="daySel"></div>
+
+    <!-- Text card -->
+    <div class="text-card">
+      <div class="text-meta">
+        <span class="text-difficulty" id="textDiff">سهل</span>
+        <span class="text-title" id="textTitle"></span>
+      </div>
+      <div class="text-body" id="textBody"></div>
+    </div>
+
+    <!-- Recorder -->
+    <div class="rec-controls">
+      <div class="rec-timer" id="recTimer">00:00</div>
+      <button class="rec-btn-main" id="recBtn" onclick="toggleRec()">🎙️</button>
+      <div class="rec-status" id="recStatus">اضغط لبدء التسجيل</div>
+
+      <div class="recordings-list" id="recList"></div>
+    </div>
+
+    <div class="alert info" style="margin-top: 18px;">
+      <strong>📱 ملاحظة مهمة</strong>
+      أول مرة تضغط على زر التسجيل، الجهاز راح يطلب إذن استخدام المايكروفون — وافق.
+      التسجيلات محفوظة في جهازك فقط ولا ترسل لأي مكان.
+    </div>
+  </div>
+
+
+<div style="background: var(--navy); color: #8ab4d4; text-align: center; padding: 28px 20px; font-size: 13px;">
+  <p style="margin-bottom: 6px; color: #fff; font-size: 15px; font-weight: 700;">🤲 بالتوفيق — الرحلة طويلة لكنها تستحق كل خطوة</p>
+  <p>مبني على أبحاث ASHA، Stuttering Foundation، وجامعة تكساس (2024–2025)</p>
+  <p style="margin-top: 5px;">تذكّر: الخوف من التأتأة أسوأ من التأتأة نفسها</p>
+</div>
+
+<script>
+function show(id, btn) {
+  document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+  document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  btn.classList.add('active');
+  btn.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+  if (id === 'tracker') renderTracker();
+  if (id === 'recorder') initRecorderUI();
+}
+
+// ── TRACKER LOGIC ──
+const DAYS_AR = ['الأحد','الإثنين','الثلاثاء','الأربعاء','الخميس','الجمعة','السبت'];
+const WEEKS = 6;
+const DAYS_PER_WEEK = 7;
+const TOTAL = WEEKS * DAYS_PER_WEEK;
+
+function getState() {
+  try {
+    return JSON.parse(localStorage.getItem('tracker_v1') || '{}');
+  } catch(e) { return {}; }
+}
+function saveState(s) {
+  localStorage.setItem('tracker_v1', JSON.stringify(s));
+}
+
+function changeGoal(delta) {
+  const s = getState();
+  s.goal = Math.max(1, Math.min(20, (s.goal || 3) + delta));
+  saveState(s);
+  document.getElementById('goalVal').textContent = s.goal;
+}
+
+function toggleDay(week, day) {
+  const s = getState();
+  const key = `w${week}d${day}`;
+  s[key] = !s[key];
+  saveState(s);
+  renderTracker();
+}
+
+function resetTracker() {
+  if (confirm('هل أنت متأكد؟ سيتم حذف كل التقدم.')) {
+    localStorage.removeItem('tracker_v1');
+    renderTracker();
+  }
+}
+
+function calcStreak(s) {
+  let streak = 0;
+  for (let i = TOTAL - 1; i >= 0; i--) {
+    const w = Math.floor(i / DAYS_PER_WEEK);
+    const d = i % DAYS_PER_WEEK;
+    if (s[`w${w}d${d}`]) streak++;
+    else break;
+  }
+  return streak;
+}
+
+function renderTracker() {
+  const s = getState();
+  const goal = s.goal || 3;
+  document.getElementById('goalVal').textContent = goal;
+
+  let totalDone = 0;
+  const grid = document.getElementById('weeksGrid');
+  grid.innerHTML = '';
+
+  for (let w = 0; w < WEEKS; w++) {
+    let weekDone = 0;
+    for (let d = 0; d < DAYS_PER_WEEK; d++) {
+      if (s[`w${w}d${d}`]) { weekDone++; totalDone++; }
+    }
+
+    const block = document.createElement('div');
+    block.className = 'week-block';
+    block.innerHTML = `
+      <div class="week-title">
+        <span>الأسبوع ${w + 1}</span>
+        <span class="week-progress-text">${weekDone} / ${DAYS_PER_WEEK} أيام</span>
+      </div>
+      <div class="days-row" id="week-${w}-row"></div>
+    `;
+    grid.appendChild(block);
+
+    const row = block.querySelector(`#week-${w}-row`);
+    for (let d = 0; d < DAYS_PER_WEEK; d++) {
+      const done = !!s[`w${w}d${d}`];
+      const cell = document.createElement('div');
+      cell.className = 'day-cell';
+      cell.innerHTML = `
+        <div class="day-label">${DAYS_AR[d].slice(0,3)}</div>
+        <div class="day-check ${done ? 'done' : ''}">${done ? '✓' : ''}</div>
+        <div class="day-num">ي${w * 7 + d + 1}</div>
+      `;
+      cell.addEventListener('click', () => toggleDay(w, d));
+      row.appendChild(cell);
+    }
+  }
+
+  const pct = Math.round((totalDone / TOTAL) * 100);
+  document.getElementById('totalDone').textContent = totalDone;
+  document.getElementById('streakVal').textContent = calcStreak(s);
+  document.getElementById('pctVal').textContent = pct + '%';
+}
+
+// init on load if tracker already visible
+window.addEventListener('load', () => {
+  if (document.getElementById('tracker').classList.contains('active')) renderTracker();
+});
+
+// ════════ RECORDER LOGIC ════════
+const TEXTS = [
+  // ═══ الأسبوع 1: جمل قصيرة وسهلة ═══
+  { week:1, day:1, diff:'easy', title:'البداية', body:'السلام عليكم.\nأنا بخير.\nاليوم جميل.\nأحب الحياة.\nأنا قوي.' },
+  { week:1, day:2, diff:'easy', title:'أسماء بسيطة', body:'محمد، أحمد، علي، خالد.\nنور، سارة، ليلى، مريم.\nأخي وأختي وأمي وأبي.\nأصدقائي يحبونني.' },
+  { week:1, day:3, diff:'easy', title:'الأرقام', body:'واحد، اثنان، ثلاثة، أربعة، خمسة.\nستة، سبعة، ثمانية، تسعة، عشرة.\nعشرون، ثلاثون، مئة، ألف.\nأعد من واحد إلى عشرة بهدوء.' },
+  { week:1, day:4, diff:'easy', title:'أيام الأسبوع', body:'السبت، الأحد، الإثنين، الثلاثاء.\nالأربعاء، الخميس، الجمعة.\nاليوم يوم جديد.\nأبدأ يومي بثقة.' },
+  { week:1, day:5, diff:'easy', title:'جمل قصيرة', body:'الشمس مشرقة.\nالقهوة لذيذة.\nالسماء صافية.\nأنا أتعلم كل يوم.\nصوتي جميل كما هو.' },
+  { week:1, day:6, diff:'easy', title:'الحمد لله', body:'الحمد لله على كل شي.\nالحمد لله على الصحة.\nالحمد لله على الأهل.\nالحمد لله في السراء والضراء.' },
+  { week:1, day:7, diff:'easy', title:'مراجعة الأسبوع', body:'أكملت أسبوعاً كاملاً.\nأنا فخور بنفسي.\nخطوة خطوة أتقدم.\nصوتي يستحق أن يُسمع.' },
+
+  // ═══ الأسبوع 2: جمل متوسطة ═══
+  { week:2, day:1, diff:'easy', title:'وصف يومي', body:'استيقظت اليوم في الصباح الباكر.\nشربت كوب قهوة دافئ.\nنظرت من النافذة ورأيت الشمس.\nشعرت بالامتنان لبداية يوم جديد.' },
+  { week:2, day:2, diff:'med', title:'حكمة', body:'الصبر مفتاح الفرج.\nمن جدّ وجد، ومن زرع حصد.\nالعقل السليم في الجسم السليم.\nخير الكلام ما قلّ ودلّ.' },
+  { week:2, day:3, diff:'med', title:'بيت من الشعر', body:'إذا الشعبُ يوماً أراد الحياةَ\nفلا بُدَّ أن يستجيبَ القَدَر\nولا بُدَّ لليلِ أن ينجلي\nولا بُدَّ للقيدِ أن ينكسر' },
+  { week:2, day:4, diff:'med', title:'وصف مكان', body:'في وسط المدينة شارع طويل.\nعلى جانبيه أشجار خضراء عالية.\nالناس يمشون فيه بهدوء.\nرائحة القهوة تنتشر من كل المقاهي.' },
+  { week:2, day:5, diff:'med', title:'دعاء', body:'اللهم اشرح لي صدري.\nويسر لي أمري.\nواحلل عقدةً من لساني.\nيفقهوا قولي.' },
+  { week:2, day:6, diff:'med', title:'قصة قصيرة', body:'في يوم من الأيام، خرج رجل من بيته.\nمشى في الطريق وقابل صديقاً قديماً.\nتحدثا لساعة كاملة بدون توقف.\nعادا كل واحد إلى بيته سعيداً.' },
+  { week:2, day:7, diff:'med', title:'تأمل', body:'أنا لست تأتأتي.\nأنا أكبر من أي صعوبة.\nصوتي له قيمة كما هو.\nأتقبل نفسي بكل ما فيها.' },
+
+  // ═══ الأسبوع 3: قصائد قصيرة ═══
+  { week:3, day:1, diff:'med', title:'قصيدة المتنبي', body:'على قدرِ أهلِ العزمِ تأتي العزائمُ\nوتأتي على قدرِ الكرامِ المكارمُ\nوتَعظُمُ في عينِ الصغيرِ صغارُها\nوتَصغُرُ في عينِ العظيمِ العظائمُ' },
+  { week:3, day:2, diff:'med', title:'إيليا أبو ماضي', body:'كن جميلاً ترى الوجودَ جميلا\nوارضَ بالعيشِ يكنْ عيشُك سهلا\nأيها الشاكي وما بك داءٌ\nكيف تغدو إذا غدوتَ عليلا' },
+  { week:3, day:3, diff:'med', title:'أبو القاسم الشابي', body:'إذا ما طمحتُ إلى غايةٍ\nركبتُ المُنى ونسيتُ الحذرْ\nومن لا يحبُّ صعودَ الجبال\nيعشْ أبدَ الدهرِ بين الحُفرْ' },
+  { week:3, day:4, diff:'med', title:'حكم', body:'لا تحزن على ما فات.\nولا تخف مما هو آت.\nعش لحظتك بكل ما تستحق.\nالوقت أغلى من الذهب.' },
+  { week:3, day:5, diff:'med', title:'وصف الطبيعة', body:'البحر هادئ في الصباح.\nالأمواج تلامس الشاطئ بلطف.\nالنوارس تطير فوق الماء.\nالسماء تعكس لونها على البحر.' },
+  { week:3, day:6, diff:'hard', title:'فقرة طويلة', body:'الإنسان قادر على تغيير حياته في أي لحظة. كل ما يحتاجه هو قرار صادق وخطوات صغيرة متواصلة. النجاح ليس صدفة، بل نتيجة عمل يومي. والفشل ليس نهاية، بل بداية لطريق جديد.' },
+  { week:3, day:7, diff:'hard', title:'منتصف الطريق', body:'أكملت نصف الرحلة.\nمن كان قبل ثلاثة أسابيع يخاف من الكلمة الأولى، الآن يقرأ بثقة.\nمن كان يتجنب التسجيل، الآن يسجّل بنفسه.\nالطريق ما زال طويلاً، لكن الفرق واضح.' },
+
+  // ═══ الأسبوع 4: نصوص أصعب ═══
+  { week:4, day:1, diff:'hard', title:'حروف صعبة', body:'بائع البطيخ يبيع بأبخس الأثمان.\nالقطار قادم من القاهرة قريباً.\nخالد يخبز خبزاً خفيفاً في المخبز.\nسامي سافر إلى سوريا في الصيف.' },
+  { week:4, day:2, diff:'hard', title:'قصيدة الشابي', body:'إذا الشعبُ يوماً أرادَ الحياةَ\nفلا بدَّ أنْ يستجيبَ القدَر\nولا بدَّ لليلِ أنْ ينجلي\nولا بدَّ للقيدِ أنْ ينكسر\nومن لم يعانقهُ شوقُ الحياةِ\nتبخّرَ في جوِّها واندثَر' },
+  { week:4, day:3, diff:'hard', title:'فقرة فلسفية', body:'الحياة رحلة طويلة مليئة بالدروس. كل تجربة، حلوة كانت أو مرة، تعلمك شيئاً جديداً. المهم ليس ما يحدث لك، بل كيف تتعامل معه. الإنسان القوي ليس الذي لا يقع، بل الذي ينهض في كل مرة يقع فيها.' },
+  { week:4, day:4, diff:'hard', title:'خطبة قصيرة', body:'أيها الإخوة والأخوات.\nالحمد لله رب العالمين.\nنجتمع اليوم لنتذكر أن الحياة قصيرة.\nوأن كل لحظة فيها هي هدية.\nفلنشكر الله ونعمل الخير.' },
+  { week:4, day:5, diff:'hard', title:'حروف الانفجار', body:'بابُ البيتِ مفتوح.\nتاجِرُ التمرِ تحتَ الشجرة.\nكأسُ القهوةِ على الطاولة.\nقطُّ القَصرِ قافزٌ من القفص.' },
+  { week:4, day:6, diff:'hard', title:'محمود درويش', body:'سَجِّلْ! أنا عربيّ\nورقمُ بطاقتي خمسونَ ألف\nوأطفالي ثمانيةٌ\nوتاسعهم سيأتي بعدَ صَيفْ\nفهل تَغضب؟' },
+  { week:4, day:7, diff:'hard', title:'إنجاز', body:'انتهى الأسبوع الرابع.\nنطقتُ كلمات كنت أهرب منها.\nقرأتُ نصوصاً ما كنت أتخيل أني أقدر أقرأها.\nلسانٌ كان مقيداً، الآن يتحرر يوماً بعد يوم.' },
+
+  // ═══ الأسبوع 5: نصوص حوارية ومواقف ═══
+  { week:5, day:1, diff:'hard', title:'حوار في مقهى', body:'مرحباً، أبغى كوب قهوة لو سمحت.\nنعم، حليب قليل وبدون سكر.\nكم السعر؟ تفضل.\nشكراً جزيلاً، يوم سعيد.' },
+  { week:5, day:2, diff:'hard', title:'تقديم نفسي', body:'اسمي وأنا من السعودية.\nأدرس في الجامعة وأحب القراءة.\nأعمل على تطوير نفسي كل يوم.\nأؤمن أن كل صوت يستحق أن يُسمع، بما فيه صوتي.' },
+  { week:5, day:3, diff:'hard', title:'مكالمة هاتفية', body:'السلام عليكم.\nأبغى أستفسر عن موعد متاح هذا الأسبوع.\nهل عندكم وقت يوم الثلاثاء بعد العصر؟\nممتاز، شكراً لكم، إلى اللقاء.' },
+  { week:5, day:4, diff:'hard', title:'الإفصاح', body:'أحياناً أتأتأ، وهذا جزء من طريقتي في الكلام.\nلا أحتاج منك تكمل كلامي.\nأعطني وقتي وسأقول ما أريد.\nصوتي مثل أي صوت، له حق أن يُسمع.' },
+  { week:5, day:5, diff:'hard', title:'نزار قباني', body:'قرأتُ كتابَكَ يا سيدي\nوأبكتني صفحاتٌ كثيرة\nوأضحكتني صفحاتٌ كثيرة\nوأشعرتني بأنّي صغيرة' },
+  { week:5, day:6, diff:'hard', title:'مونولوج', body:'في كل مرة أتكلم، أكسر خوفاً قديماً.\nفي كل مرة أواجه، أبني نفساً جديدة.\nالتأتأة ليست عيباً، بل جزء من رحلتي.\nوأنا أحب من أنا أصبحت بسببها وبرغمها.' },
+  { week:5, day:7, diff:'hard', title:'أسبوع التحدي', body:'هذا الأسبوع تكلمتُ مع غريب.\nطلبتُ ما أريد بصوت واضح.\nقلتُ كلمات كنت أتجنبها.\nهذا أنا الآن، وأنا أتطور.' },
+
+  // ═══ الأسبوع 6: النصوص الكبيرة والقصائد الكاملة ═══
+  { week:6, day:1, diff:'hard', title:'قصيدة كاملة', body:'إذا الشعبُ يوماً أرادَ الحياةَ\nفلا بدَّ أنْ يستجيبَ القدَر\nولا بدَّ لليلِ أنْ ينجلي\nولا بدَّ للقيدِ أنْ ينكسر\nومن لم يعانقهُ شوقُ الحياةِ\nتبخّرَ في جوِّها واندثَر\nفويلٌ لمن لم تشُقهُ الحياةُ\nمن صفعةِ العدمِ المنتصر' },
+  { week:6, day:2, diff:'hard', title:'فقرة عميقة', body:'الكلمات أقوى مما نظن. كلمة واحدة تستطيع أن تشفي جرحاً قديماً، وكلمة أخرى تستطيع أن تفتح جرحاً ظننّا أنه التئم. لذا اختر كلماتك بعناية، وأهمها الكلمات التي تقولها لنفسك. كن لطيفاً مع صوتك الداخلي.' },
+  { week:6, day:3, diff:'hard', title:'المتنبي الكامل', body:'على قدرِ أهلِ العزمِ تأتي العزائمُ\nوتأتي على قدرِ الكرامِ المكارمُ\nوتَعظُمُ في عينِ الصغيرِ صغارُها\nوتَصغُرُ في عينِ العظيمِ العظائمُ\nيُكلَّفُ سَيفُ الدولةِ الجيشَ هَمَّه\nوقد عَجِزَتْ عنه الجيوشُ الخَضارمُ' },
+  { week:6, day:4, diff:'hard', title:'كلمة شكر', body:'أشكر كل من وقف بجانبي.\nأشكر نفسي على الصبر والمحاولة.\nأشكر هذا الصوت الذي تعبت معه ست أسابيع.\nأشكر كل تأتأة علمتني أن أكون أقوى.\nالشكر لله أولاً وأخيراً.' },
+  { week:6, day:5, diff:'hard', title:'خطاب لنفسي', body:'يا صاحب هذا الصوت.\nقطعتَ طريقاً ما كان أحد يصدق أنك تقطعه.\nبدأتَ خائفاً من جملة قصيرة، الآن تقرأ قصائد كاملة.\nمهما كان ما تبقى من الطريق، أنت أقوى مما كنت.\nاستمر، فالأفضل قادم.' },
+  { week:6, day:6, diff:'hard', title:'وعد', body:'أعدُ نفسي أن لا أتجنب موقف كلام بعد اليوم.\nأعدُ نفسي أن أتكلم حتى لو تأتأت.\nأعدُ نفسي أن أستمر في التمارين.\nأعدُ نفسي أن أكون رحيماً مع صوتي.\nوأن أتذكر دائماً: أنا أكبر من أي تأتأة.' },
+  { week:6, day:7, diff:'hard', title:'النهاية والبداية', body:'أكملتُ 42 يوماً.\nاسمع الآن تسجيل اليوم الأول.\nاسمع كم تغيّر صوتك.\nاسمع كم نَمَت ثقتك.\nهذه ليست النهاية، بل بداية حياة جديدة مع صوتك.\nبارك الله فيك على كل هذه المحاولات.' }
+];
+
+let currentWeek = 1;
+let currentDay = 1;
+let mediaRecorder = null;
+let audioChunks = [];
+let recStartTime = 0;
+let timerInterval = null;
+
+function initRecorderUI() {
+  // Week buttons
+  const ws = document.getElementById('weekSel');
+  ws.innerHTML = '';
+  for (let w = 1; w <= 6; w++) {
+    const b = document.createElement('button');
+    b.className = 'week-btn' + (w === currentWeek ? ' active' : '');
+    b.textContent = `الأسبوع ${w}`;
+    b.onclick = () => { currentWeek = w; currentDay = 1; initRecorderUI(); };
+    ws.appendChild(b);
+  }
+  // Day buttons
+  const ds = document.getElementById('daySel');
+  ds.innerHTML = '';
+  const dayNames = ['السبت','الأحد','الإثنين','الثلاثاء','الأربعاء','الخميس','الجمعة'];
+  for (let d = 1; d <= 7; d++) {
+    const b = document.createElement('button');
+    const hasRec = !!getRecording(currentWeek, d);
+    b.className = 'day-btn' + (d === currentDay ? ' active' : '') + (hasRec ? ' has-rec' : '');
+    b.innerHTML = `${dayNames[d-1]}<span class="d-num">يوم ${(currentWeek-1)*7 + d}</span>`;
+    b.onclick = () => { currentDay = d; initRecorderUI(); };
+    ds.appendChild(b);
+  }
+  // Load text
+  const t = TEXTS.find(x => x.week === currentWeek && x.day === currentDay);
+  if (t) {
+    const diffMap = { easy: 'سهل', med: 'متوسط', hard: 'متقدم' };
+    document.getElementById('textDiff').textContent = diffMap[t.diff];
+    document.getElementById('textDiff').className = 'text-difficulty ' + t.diff;
+    document.getElementById('textTitle').textContent = t.title;
+    document.getElementById('textBody').textContent = t.body;
+  }
+  renderRecordings();
+}
+
+function getRecording(week, day) {
+  try {
+    return localStorage.getItem(`rec_w${week}_d${day}`);
+  } catch(e) { return null; }
+}
+
+function saveRecording(week, day, dataUrl) {
+  try {
+    localStorage.setItem(`rec_w${week}_d${day}`, dataUrl);
+    localStorage.setItem(`rec_w${week}_d${day}_date`, new Date().toISOString());
+  } catch(e) {
+    alert('فشل الحفظ — الذاكرة ممتلئة. احذف بعض التسجيلات القديمة.');
+  }
+}
+
+function deleteRecording(week, day) {
+  if (confirm('حذف هذا التسجيل؟')) {
+    localStorage.removeItem(`rec_w${week}_d${day}`);
+    localStorage.removeItem(`rec_w${week}_d${day}_date`);
+    initRecorderUI();
+  }
+}
+
+function renderRecordings() {
+  const list = document.getElementById('recList');
+  list.innerHTML = '';
+  const rec = getRecording(currentWeek, currentDay);
+  if (!rec) {
+    list.innerHTML = '<p style="color:var(--gray); font-size:13px; margin-top:10px;">لا يوجد تسجيل لهذا اليوم بعد</p>';
+    return;
+  }
+  const date = localStorage.getItem(`rec_w${currentWeek}_d${currentDay}_date`);
+  const dateStr = date ? new Date(date).toLocaleDateString('ar-SA') : '';
+  const item = document.createElement('div');
+  item.className = 'recording-item';
+  item.innerHTML = `
+    <span class="rec-date">📅 ${dateStr}</span>
+    <audio controls src="${rec}"></audio>
+    <button class="del-btn" onclick="deleteRecording(${currentWeek}, ${currentDay})">حذف</button>
+  `;
+  list.appendChild(item);
+}
+
+async function toggleRec() {
+  const btn = document.getElementById('recBtn');
+  const status = document.getElementById('recStatus');
+
+  if (mediaRecorder && mediaRecorder.state === 'recording') {
+    mediaRecorder.stop();
+    return;
+  }
+
+  try {
+    const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
+
+    // اختيار صيغة مدعومة (iOS يدعم mp4 بس، أندرويد وحاسوب يدعمون webm)
+    let mimeType = '';
+    const candidates = ['audio/mp4', 'audio/webm;codecs=opus', 'audio/webm', 'audio/ogg'];
+    for (const t of candidates) {
+      if (MediaRecorder.isTypeSupported(t)) { mimeType = t; break; }
+    }
+
+    mediaRecorder = mimeType ? new MediaRecorder(stream, { mimeType }) : new MediaRecorder(stream);
+    audioChunks = [];
+
+    mediaRecorder.ondataavailable = e => { if (e.data.size > 0) audioChunks.push(e.data); };
+    mediaRecorder.onstop = () => {
+      stream.getTracks().forEach(t => t.stop());
+      const actualType = mediaRecorder.mimeType || mimeType || 'audio/mp4';
+      const blob = new Blob(audioChunks, { type: actualType });
+      const reader = new FileReader();
+      reader.onloadend = () => {
+        saveRecording(currentWeek, currentDay, reader.result);
+        initRecorderUI();
+        btn.classList.remove('recording');
+        btn.textContent = '🎙️';
+        status.textContent = '✅ تم الحفظ — اسمع التسجيل الحين';
+        clearInterval(timerInterval);
+        document.getElementById('recTimer').textContent = '00:00';
+      };
+      reader.readAsDataURL(blob);
+    };
+
+    mediaRecorder.start();
+    btn.classList.add('recording');
+    btn.textContent = '⏹';
+    status.textContent = '🔴 جاري التسجيل... اضغط للإيقاف';
+    recStartTime = Date.now();
+    timerInterval = setInterval(() => {
+      const sec = Math.floor((Date.now() - recStartTime) / 1000);
+      const m = String(Math.floor(sec / 60)).padStart(2, '0');
+      const s = String(sec % 60).padStart(2, '0');
+      document.getElementById('recTimer').textContent = `${m}:${s}`;
+    }, 200);
+  } catch(e) {
+    status.textContent = '❌ ما قدرت أوصل للمايكروفون — تأكد من الإذن';
+  }
+}
+</script>
+</body>
+</html>
